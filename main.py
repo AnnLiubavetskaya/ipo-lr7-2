@@ -11,12 +11,14 @@ with open(file, 'r', encoding='utf-8') as file:
             if skill["fields"].get("code") == nomer :
                 sk_code = skill["fields"].get("code")
                 sk_title = skill["fields"].get("title")
+                sk_prof = skill["fields"].get("specialty")
                 skills = True
 
                 for profecia in data :
                     if profecia.get("model") == "data.specialty":
                         prof_code = profecia["fields"].get("code")
-                        if prof_code in nomer:
+                        prof_pk = profecia["pk"]
+                        if prof_code in nomer and sk_prof == prof_pk :
                             prof_title = profecia["fields"].get("title")
                             prof_type = profecia["fields"].get("c_type")
                             break
